@@ -1,0 +1,17 @@
+
+.launches-list li {
+    margin: 0.5rem 0;
+}
+
+.launch-link {
+    color: #a9bdfa;
+}
+
+.launches-list a:link {
+    text-decoration: none;
+}
+
+.launches-list a:hover {
+    text-decoration: underline;
+    text-decoration-color: #a9bdfa;
+}
