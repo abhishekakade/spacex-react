@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/spacex-react/static/css/main.77a138c7.css",
-    "main.js": "/spacex-react/static/js/main.cba17710.js",
+    "main.js": "/spacex-react/static/js/main.dc598d83.js",
     "static/js/787.751ecf3c.chunk.js": "/spacex-react/static/js/787.751ecf3c.chunk.js",
+    "service-worker.js": "/spacex-react/service-worker.js",
     "index.html": "/spacex-react/index.html",
     "main.77a138c7.css.map": "/spacex-react/static/css/main.77a138c7.css.map",
-    "main.cba17710.js.map": "/spacex-react/static/js/main.cba17710.js.map",
+    "main.dc598d83.js.map": "/spacex-react/static/js/main.dc598d83.js.map",
     "787.751ecf3c.chunk.js.map": "/spacex-react/static/js/787.751ecf3c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.77a138c7.css",
-    "static/js/main.cba17710.js"
+    "static/js/main.dc598d83.js"
   ]
 }
