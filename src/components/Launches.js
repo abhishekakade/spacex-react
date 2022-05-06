@@ -1,35 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // useParams will get the launch ID from the clicked link
 import { useParams } from "react-router-dom";
-import useFetchLaunchDetails from "../Hooks/useFetchLaunchDetails";
-import "../Styles/Launches.css"
+import "../Styles/Launches.css";
 
+import useContextData from "../Hooks/useContextData";
+import { Launch } from "./Launch";
 
 const Launches = () => {
+  const [currentLaunchData, setCurrentLaunchData] = useState();
 
   const { launchId } = useParams();
-  console.log(launchId);
+  // console.log(launchId);
 
-  const { isLoading, serverError, apiData } = useFetchLaunchDetails(
-    `https://api.spacexdata.com/v4/launches/${launchId}`
-  );
+  // get the required data from context data
+  const { apiDataLaunches, isLoadingLaunches, serverErrorLaunches } =
+    useContextData();
+  // console.log(apiDataLaunches, isLoadingLaunches, serverErrorLaunches);
+
+  useEffect(() => {
+    // takes the launchID from URL param and sets the state 
+    const filteredLaunchData = (id) => {
+      let filteredObj = {};
+      filteredObj = apiDataLaunches?.filter((eachObj) => eachObj?.id === id);
+      return filteredObj;
+    };
+    const launchData = filteredLaunchData(launchId);
+
+    setCurrentLaunchData(launchData);
+  }, [apiDataLaunches, launchId]);
+
+  // console.log("currentLaunchData", !!currentLaunchData, currentLaunchData);
 
   return (
-    <div>
-      <h2>Launch Details</h2>
-      {isLoading && <h3>Loading...</h3>}
-      {!isLoading && serverError ? (
-        <h3>Error fetching data. Try again later...</h3>
-      ) : (
-        <span>{JSON.stringify(apiData)}</span>
-      )}
-      <hr />
-
-      <p>{apiData?.name}</p>
-      <p>Details: {apiData?.details ? (apiData?.details) : (<span>No details available...</span>)}</p>
-      <p>{apiData?.date_utc}</p>
-      <p>Reused: {apiData?.cores[0]?.reused?.toString()}</p>
-    </div>
+    <Launch
+      isLoadingLaunches={isLoadingLaunches}
+      serverErrorLaunches={serverErrorLaunches}
+      currentLaunchData={currentLaunchData}
+    />
   );
 };
 

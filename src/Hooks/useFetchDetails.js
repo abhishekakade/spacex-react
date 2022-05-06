@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useFetchLaunchDetails = (url) => {
-  console.log(url);
+  // console.log(url);
 
   const [isLoading, setIsLoading] = useState(false);
   const [apiData, setApiData] = useState(null);
@@ -25,17 +25,7 @@ const useFetchLaunchDetails = (url) => {
     };
 
     fetchData();
-
     // https://api.spacexdata.com/v4/launches/5eb87cfeffd86e000604b34d
-    //   Axios.get("https://api.spacexdata.com/v4/launches/:id")
-
-    //   Axios.get(`https://api.spacexdata.com/v4/launches/${launchId}`)
-    //     .then((res) => {
-    //       console.log(res.data);
-    //       console.log(`https://api.spacexdata.com/v4/launches/${launchId}`);
-    //       setLaunchInfo(res.data);
-    //     })
-    //     .catch((err) => console.error(err));
   }, [url]);
 
   // console.log(launchInfo);

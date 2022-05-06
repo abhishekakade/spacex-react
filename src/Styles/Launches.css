@@ -1,10 +1,43 @@
+.launches {
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 800px;
+    display: block;
+}
+
+.launches h1 {
+    text-align: center;
+}
+
+.launch-name {
+    text-align: center;
+}
+
+.launch-img {
+    display: block;
+    margin: auto;
+}
+
+.launch-details {
+    text-align: center;
+    margin: 1rem auto;
+    max-width: 60ch;
+}
+
+.launch-reuse-status {
+    text-transform: capitalize;
+}
 
 .launches-list li {
     margin: 0.5rem 0;
 }
 
-.launch-link {
+.launch-link, .launch-wikipedia-links, .launch-to-home {
     color: #a9bdfa;
+}
+
+.launch-link {
+    margin-left: 0.5rem;
 }
 
 .launches-list a:link {

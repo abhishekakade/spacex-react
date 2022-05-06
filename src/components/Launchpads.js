@@ -1,13 +1,31 @@
-import React from "react";
 import "../Styles/Launchpads.css";
 import { Link } from "react-router-dom";
-
+import useContextData from "../Hooks/useContextData";
+import { Rocket } from "@styled-icons/ionicons-sharp";
 
 const Launchpads = ({ info }) => {
+  
+  const { isLoadingLaunches, apiDataLaunches, serverErrorLaunches } =
+    useContextData();
+  // console.log(isLoadingLaunches, apiDataLaunches, serverErrorLaunches);
+
   let launches = [];
   if (info.launches.length) {
     launches = info.launches.slice(0, 3);
   }
+
+  const getLaunchNamesFromId = (id) => {
+    
+    let launchName = "";
+    if (!isLoadingLaunches && !serverErrorLaunches) {
+      let launchDetails = apiDataLaunches?.filter(
+        (eachObj) => eachObj?.id === id
+      );
+      launchName = launchDetails[0]?.name;
+      // console.log(launchDetails, launchDetails[0]?.name);
+    }
+    return launchName;
+  };
 
   return (
     <div className="launchpads">
@@ -34,11 +52,9 @@ const Launchpads = ({ info }) => {
             launches.map((launchID) => {
               return (
                 <li key={launchID}>
-                  <Link
-                    className="launch-link"
-                    to={"/launches/" + launchID}
-                  >
-                    {launchID}
+                  <Rocket size="1rem" title="Unlock account" />
+                  <Link className="launch-link" to={"/launches/" + launchID}>
+                    {getLaunchNamesFromId(launchID)}
                   </Link>
                 </li>
               );

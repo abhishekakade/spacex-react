@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Launchpads from "./Launchpads";
-import useFetchLaunchDetails from "../Hooks/useFetchLaunchDetails";
+import { DataContext } from "../App";
 
 const Home = () => {
-  const { isLoading, serverError, apiData } = useFetchLaunchDetails(
-    "https://api.spacexdata.com/v4/launchpads"
-  );
+
+  // using ContextAPI to share fetched API data between components
+  const launchpadsAPIData = useContext(DataContext);
+  const { isLoading, serverError, apiData } = launchpadsAPIData?.allLaunchpads;
 
   return (
     <Fragment>
@@ -18,7 +19,7 @@ const Home = () => {
             <h3>Loading...</h3>
           ) : (
             <div className="launchpads-list">
-              {apiData?.map((item, key) => (
+              {apiData?.map((item) => (
                 <Launchpads info={item} key={item.id}></Launchpads>
               ))}
             </div>
