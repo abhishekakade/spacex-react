@@ -21,6 +21,7 @@
 .launch-details {
     text-align: center;
     margin: 1rem auto;
+    padding: 0 1.5rem;
     max-width: 60ch;
 }
 
